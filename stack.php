@@ -8,16 +8,21 @@ $stack->push(3);
 $stack->push(4);
 $stack->push(5);
 $stack->pop();
+$stack->push('test');
 $y = 0;
-$stack->getTop($y);
 $stack->print();
+echo '<pre>';
+echo '</pre>';
+$stack->getTop($y);
+echo '<pre>';
+echo 'y value is: ';
 print_r($y);
 
 class Stack
 {
 
     const MAX_SIZE = 100;
-    private int $top;
+    private $top;
     private array $items;
 
     public function __construct()
@@ -25,7 +30,7 @@ class Stack
         $this->top = -1;
     }
 
-    public function push(int $element)
+    public function push($element)
     {
 
         if ($this->top >= self::MAX_SIZE) {
@@ -55,7 +60,7 @@ class Stack
             array_pop($this->items);
         }
     }
-    public function getTop(int &$stackTop)
+    public function getTop(&$stackTop)
     {
         if ($this->isEmpty() == 0) {
             return 'Stack is empty';
